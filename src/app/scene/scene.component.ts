@@ -21,18 +21,18 @@ export class SceneComponent implements OnInit {
       THREE.MathUtils.randFloatSpread(100),
     ]);
 
-  avatarTexture$ = this.loaderService.use(
+  public avatarTexture$ = this.loaderService.use(
     THREE.TextureLoader,
     "/assets/aaron.png"
   );
 
-  moonTextures$ = forkJoin([
+  public moonTextures$ = forkJoin([
     this.loaderService.use(THREE.TextureLoader, "/assets/moon.jpeg"),
     this.loaderService.use(THREE.TextureLoader, "/assets/normal.jpeg"),
   ]).pipe(map(([moon, normal]) => ({ moon, normal })));
 
-  moon?: THREE.Mesh;
-  chau?: THREE.Mesh;
+  public moon?: THREE.Mesh;
+  public aaron?: THREE.Mesh;
 
   constructor(
     @Inject(DOCUMENT) private readonly doc: Document,
@@ -41,7 +41,7 @@ export class SceneComponent implements OnInit {
     private readonly destroyed: DestroyedService
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.canvasStore.scene$
       .pipe(
         take(1),
@@ -74,9 +74,9 @@ export class SceneComponent implements OnInit {
           this.moon.rotation.z += 0.05;
         }
 
-        if (this.chau) {
-          this.chau.rotation.y += 0.01;
-          this.chau.rotation.z += 0.01;
+        if (this.aaron) {
+          this.aaron.rotation.y += 0.01;
+          this.aaron.rotation.z += 0.01;
         }
 
         if (camera) {
@@ -87,13 +87,13 @@ export class SceneComponent implements OnInit {
       });
   }
 
-  onTorusAnimateReady(torus: THREE.Mesh) {
+  public onTorusAnimateReady(torus: THREE.Mesh): void {
     torus.rotation.x += 0.01;
     torus.rotation.y += 0.005;
     torus.rotation.z += 0.01;
   }
 
-  onMoonAnimateReady(moon: THREE.Mesh) {
+  public onMoonAnimateReady(moon: THREE.Mesh): void {
     moon.rotation.x += 0.005;
   }
 }
