@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-fireship-threejs": {
+    "threejs": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -40,7 +40,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-fireship-threejs",
+            "outputPath": "dist/threejs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -91,10 +91,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-fireship-threejs:build:production"
+              "browserTarget": "threejs:build:production"
             },
             "development": {
-              "browserTarget": "ng-fireship-threejs:build:development"
+              "browserTarget": "threejs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -102,11 +102,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-fireship-threejs:build"
+            "browserTarget": "threejs:build"
           }
         }
       }
     }
   },
-  "defaultProject": "ng-fireship-threejs"
+  "defaultProject": "threejs"
 }
